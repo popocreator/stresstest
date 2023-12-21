@@ -7,42 +7,61 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<h1>스트레스지수테스트</h1>
-		<span>스트레스 자가진단 테스트 질문 문항</span>
-		<span>
-			[ 전혀 없다 / 거의 없다 / 종종 있다 / 자주 있다 / 매우 자주 있다 ]
-		</span>
-		<span>1. 예상치 못한 일로 당황했던 적이 얼마나 자주 있으신가요?</span>
-		<span>
-			2. 매우 중요한 일들을 '내 의지대로 조절 할 수 없다' 라는 느낌을 얼마나
-			자주 있으신가요?
-		</span>
-		<span>
-			3. 신경이 예민해지고, 스트레스를 받고 있다는 느낌을 경험 자주 하시나요?
-		</span>
-		<span>
-			4. 내가 꼭 해야 할 일들을 해낼수 없겠다' 라고 느낀 경우는 얼나나 자주
-			있으신가요?
-		</span>
-		<span>
-			5. 자신이 통제할 수 없는 일로 화를 낸 경험이 얼마나 자주 있으신가요?
-		</span>
-		<span
-			>6. "난해한 일들이 많이 쌓여 해결하지 못할것같다' 라는 생각을 하는 경우가
-			자주 있으신가요?
-		</span>
-		<span>
-			7. 평소 짜증이나도 참고 '좋아 잘 참았어' 하는 경우가 얼마나 자주
-			있으신가요?
-		</span>
-		<span>8. 컨디션이 정말 좋다~!' 라고 느끼는 얼마나 자주 있으신가요?</span>
-		<span>
-			9. 어떤 문제에 있어서 '난 꼭 해낼수 있어!' 라고 자신감을 느끼는 경우는
-			얼마나 자주 있으신가요?
-		</span>
-		<span>
-			10. 내가 생각대로 일들이 잘 진행되고 있다 라는 생각을 얼마나 하시나요?
-		</span>
+		<section class="container">
+			<main class="content">
+				<div class="progress">
+					<div class="progress-block active"></div>
+					<div class="progress-block"></div>
+					<div class="progress-block"></div>
+					<div class="progress-block"></div>
+					<div class="progress-block"></div>
+					<div class="progress-block"></div>
+					<div class="progress-block"></div>
+					<div class="progress-block"></div>
+					<div class="progress-block"></div>
+					<div class="progress-block"></div>
+				</div>
+				<div class="question">
+					<div class="question-label">Question 1</div>
+					<div class="question-text">
+						예상치 못한 일로 당황했던 적이 얼마나 자주 있으신가요?
+					</div>
+				</div>
+				<div class="answer-list">
+					<div class="answer">
+						<div class="answer-circle-container">
+							<div class="answer-circle"></div>
+						</div>
+						<span class="answer-text">전혀 없다</span>
+					</div>
+					<div class="answer selected">
+						<div class="answer-circle-container">
+							<div class="answer-circle"></div>
+						</div>
+						<span class="answer-text">거의 없다</span>
+					</div>
+					<div class="answer">
+						<div class="answer-circle-container">
+							<div class="answer-circle"></div>
+						</div>
+						<span class="answer-text">종종 있다</span>
+					</div>
+					<div class="answer">
+						<div class="answer-circle-container">
+							<div class="answer-circle"></div>
+						</div>
+						<span class="answer-text">자주 있다</span>
+					</div>
+					<div class="answer">
+						<div class="answer-circle-container">
+							<div class="answer-circle"></div>
+						</div>
+						<span class="answer-text">매우 자주 있다</span>
+					</div>
+				</div>
+			</main>
+			<div class="button">Continue</div>
+		</section>
 	</body>
 	<script src="script.js"></script>
 </html>

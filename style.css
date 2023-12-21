@@ -1,0 +1,141 @@
+:root {
+	--answer-padding: 16px;
+	--answer-circle: 20px;
+}
+
+body {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: #eee;
+	overflow: hidden;
+	color: #333;
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	max-width: 360px;
+	box-sizing: border-box;
+}
+
+.content {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	padding: 20px 28px 60px;
+}
+
+.progress {
+	display: flex;
+	flex-direction: row;
+	height: 10px;
+	width: 100%;
+}
+.progress-block {
+	flex: 1;
+	background-color: #eee;
+	border-radius: 3px;
+	height: 100%;
+	margin-right: 5px;
+}
+.progress-block:last-child {
+	margin-right: 0;
+}
+.progress-block.active {
+	background-color: orange;
+}
+
+.question {
+	margin-top: 40px;
+	margin-bottom: auto;
+}
+.question-label {
+	color: #666;
+}
+.question-text {
+	color: #333;
+	line-height: 1.6;
+	margin-top: 20px;
+}
+
+.answer-list {
+	display: inline-flex;
+	flex-direction: column;
+	border: 1px solid #eee;
+	border-radius: 8px;
+	overflow: hidden;
+	background-color: #eee;
+	width: 100%;
+	margin-top: auto;
+}
+.answer {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding-left: calc(var(--answer-padding) * 2 + var(--answer-circle));
+	height: 52px;
+	background-color: #fff;
+	margin-bottom: 1px;
+	cursor: pointer;
+}
+.answer:last-child {
+	margin-bottom: 0px;
+}
+.answer-circle-container {
+	position: absolute;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	left: var(--answer-padding);
+	top: 50%;
+	transform: translate(0, -50%);
+	width: var(--answer-circle);
+	height: var(--answer-circle);
+	border-radius: 200px;
+	border: 1px solid #dbdbdb;
+}
+.answer-circle {
+	width: calc(var(--answer-circle) - 5px);
+	height: calc(var(--answer-circle) - 5px);
+	border-radius: 200px;
+	background-color: #fff;
+}
+.answer.selected {
+	background-color: #fff7ee;
+}
+.answer.selected .answer-circle-container {
+	border-color: orange;
+}
+.answer.selected .answer-circle {
+	background-color: orange;
+}
+.answer-text {
+	margin-left: 5px;
+}
+
+.button {
+	cursor: pointer;
+	border-top: 1px solid #eee;
+	font-size: 16px;
+	color: orange;
+	font-weight: bold;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 16px 0;
+	z-index: 999;
+}
