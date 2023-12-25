@@ -60,6 +60,26 @@
 		},
 	];
 
+	function ProgressBar(length = 0, index = 0) {
+		const dom = document.createElement('div');
+		dom.classList.add('progress');
+
+		for (let i = 0; i < length; i++) {
+			const blockDom = document.createElement('div');
+			blockDom.classList.add('progress-block');
+			if (index <= i) {
+				blockDom.classList.add('active');
+			}
+			dom.appendChild(blockDom);
+		}
+
+		return dom;
+	}
+
+	function ScrollContainer() {
+		const dom = document.createElement('div');
+	}
+
 	function Question() {
 		const dom = document.createElement('div');
 	}
