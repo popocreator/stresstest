@@ -67,7 +67,7 @@
 		for (let i = 0; i < length; i++) {
 			const blockDom = document.createElement('div');
 			blockDom.classList.add('progress-block');
-			if (index <= i) {
+			if (i <= index) {
 				blockDom.classList.add('active');
 			}
 			dom.appendChild(blockDom);
@@ -91,4 +91,7 @@
 		const answer4 = document.createElement('div').setAttribute('data-score', 0);
 		const answer5 = document.createElement('div').setAttribute('data-score', 0);
 	}
+
+	const main = document.querySelector('.content');
+	main.appendChild(ProgressBar(10, 0));
 })();
