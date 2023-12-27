@@ -73,7 +73,23 @@
 			dom.appendChild(blockDom);
 		}
 
-		return dom;
+		function update(index) {
+			console.log(index);
+			document
+				.querySelectorAll('.progress-block')
+				.forEach((progressBlock, i) => {
+					if (i <= index) {
+						progressBlock.classList.add('active');
+					} else {
+						progressBlock.classList.remove('active');
+					}
+				});
+		}
+
+		return {
+			dom,
+			update,
+		};
 	}
 
 	function ScrollContainer() {
@@ -92,6 +108,10 @@
 		const answer5 = document.createElement('div').setAttribute('data-score', 0);
 	}
 
+	const progressBar = ProgressBar(10, 0);
+
 	const main = document.querySelector('.content');
-	main.appendChild(ProgressBar(10, 0));
+	main.appendChild(progressBar.dom);
+
+	// progressBar.update(3);
 })();
