@@ -60,7 +60,7 @@
 		},
 	];
 
-	function ProgressBar(length = 0, index = 0) {
+	function ProgressBar(index = 0, length = 0) {
 		const dom = document.createElement('div');
 		dom.classList.add('progress');
 
@@ -74,7 +74,6 @@
 		}
 
 		function update(index) {
-			console.log(index);
 			document
 				.querySelectorAll('.progress-block')
 				.forEach((progressBlock, i) => {
@@ -92,26 +91,88 @@
 		};
 	}
 
-	function ScrollContainer() {
+	function Question(index = 0, text = '') {
 		const dom = document.createElement('div');
-	}
+		dom.classList.add('question');
 
-	function Question() {
-		const dom = document.createElement('div');
+		const labelDom = document.createElement('div');
+		labelDom.classList.add('question-label');
+		labelDom.innerHTML = `Question ${index + 1}`;
+		dom.appendChild(labelDom);
+
+		const textDom = document.createElement('div');
+		textDom.classList.add('question-text');
+		textDom.innerHTML = text;
+		dom.appendChild(textDom);
+
+		function update(index, text) {
+			document.querySelector('.question-label').innerHTML = `Question ${
+				index + 1
+			}`;
+			document.querySelector('.question-text').innerHTML = text;
+		}
+
+		return {
+			dom,
+			update,
+		};
 	}
 
 	function Answer() {
-		const answer1 = document.createElement('div').setAttribute('data-score', 0);
-		const answer2 = document.createElement('div').setAttribute('data-score', 0);
-		const answer3 = document.createElement('div').setAttribute('data-score', 0);
-		const answer4 = document.createElement('div').setAttribute('data-score', 0);
-		const answer5 = document.createElement('div').setAttribute('data-score', 0);
+		const dom = document.createElement('div');
+		dom.classList.add('answer-list');
+
+		const answerData = [
+			{score: 1, text: '전혀 없다'},
+			{score: 2, text: '거의 없다'},
+			{score: 3, text: '종종 있다'},
+			{score: 4, text: '자주 있다'},
+			{score: 5, text: '매우 자주 있다'},
+		];
+
+		answerData.forEach((answer) => {
+			const answerDom = document.createElement('div');
+			answerDom.classList.add('answer');
+			answerDom.innerHTML = `
+				<div class="answer-circle-container">
+					<div class="answer-circle"></div>
+				</div>
+				<span class="answer-text">${answer.text}</span>
+			`;
+			answerDom.setAttribute('data-score', answer.score);
+			answerDom.addEventListener('click', () => {
+				const selectedAnswerDom = document.querySelector('.answer.selected');
+				if (selectedAnswerDom) {
+					selectedAnswerDom.classList.remove('selected');
+				}
+				answerDom.classList.add('selected');
+			});
+			dom.appendChild(answerDom);
+		});
+
+		return {
+			dom,
+		};
 	}
 
-	const progressBar = ProgressBar(10, 0);
+	function Main(questionData = []) {
+		const index = 0;
+		const progressBar = ProgressBar(index, questionData.length);
+		const question = Question(index, questionData[index].title);
+		const answer = Answer();
 
-	const main = document.querySelector('.content');
-	main.appendChild(progressBar.dom);
+		const dom = document.querySelector('.content');
+		dom.appendChild(progressBar.dom);
+		dom.appendChild(question.dom);
+		dom.appendChild(answer.dom);
 
-	// progressBar.update(3);
+		return {
+			update: (index) => {
+				progressBar.update(index);
+				question.update(index, questionData[index]);
+			},
+		};
+	}
+
+	Main(questions);
 })();

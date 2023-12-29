@@ -60,6 +60,7 @@ body {
 .question {
 	margin-top: 40px;
 	margin-bottom: auto;
+	width: 100%;
 }
 .question-label {
 	color: #666;
