@@ -1,5 +1,5 @@
 (function () {
-	const questions = [
+	let questions = [
 		{
 			id: 1,
 			title: '예상치 못한 일로 당황했던 적이 얼마나 자주 있으신가요?',
@@ -156,7 +156,7 @@
 	}
 
 	function Main(questionData = []) {
-		const index = 0;
+		let index = 0;
 		const progressBar = ProgressBar(index, questionData.length);
 		const question = Question(index, questionData[index].title);
 		const answer = Answer();
@@ -167,12 +167,21 @@
 		dom.appendChild(answer.dom);
 
 		return {
-			update: (index) => {
-				progressBar.update(index);
-				question.update(index, questionData[index]);
+			update: (_index) => {
+				if (_index < questionData.length) {
+					index = _index;
+					progressBar.update(index);
+					question.update(index, questionData[index].title);
+				}
+				return index;
 			},
 		};
 	}
 
-	Main(questions);
+	let currentIndex = 0;
+	const {update} = Main(questions);
+	document.querySelector('#continue').addEventListener('click', () => {
+		currentIndex = update(currentIndex + 1);
+		console.log(currentIndex);
+	});
 })();
