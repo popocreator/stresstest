@@ -118,7 +118,7 @@
 		};
 	}
 
-	function Answer() {
+	function Answer(index = -1) {
 		const dom = document.createElement('div');
 		dom.classList.add('answer-list');
 
@@ -130,7 +130,7 @@
 			{score: 5, text: '매우 자주 있다'},
 		];
 
-		answerData.forEach((answer) => {
+		answerData.forEach((answer, answerIndex) => {
 			const answerDom = document.createElement('div');
 			answerDom.classList.add('answer');
 			answerDom.innerHTML = `
@@ -150,8 +150,17 @@
 			dom.appendChild(answerDom);
 		});
 
+		function update(index) {
+			const selectedAnswerDom = document.querySelector('.answer.selected');
+			questions[index].score = Number(
+				selectedAnswerDom.getAttribute('data-score')
+			);
+			selectedAnswerDom.classList.remove('selected');
+		}
+
 		return {
 			dom,
+			update,
 		};
 	}
 
@@ -159,7 +168,7 @@
 		let index = 0;
 		const progressBar = ProgressBar(index, questionData.length);
 		const question = Question(index, questionData[index].title);
-		const answer = Answer();
+		const answer = Answer(index);
 
 		const dom = document.querySelector('.content');
 		dom.appendChild(progressBar.dom);
@@ -172,6 +181,7 @@
 					index = _index;
 					progressBar.update(index);
 					question.update(index, questionData[index].title);
+					answer.update(index);
 				}
 				return index;
 			},
@@ -182,6 +192,5 @@
 	const {update} = Main(questions);
 	document.querySelector('#continue').addEventListener('click', () => {
 		currentIndex = update(currentIndex + 1);
-		console.log(currentIndex);
 	});
 })();
